@@ -28,6 +28,3 @@ Se implementa para la organizacion interna de la empresa.
 * **Camilo Abarca** - *Frontend* - [Camilo](https://github.com/Krusink)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/Krusink/ProyectoWebEGG/graphs/contributors) quíenes han participado en este proyecto. 
-
----
-⌨️ con ❤️ por [Krusink](https://github.com/Krusink)
