@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/plantilla/plantilla::head"></head>
+
+<body>
+    <header th:replace="/plantilla/plantilla::header"></header>
+
+    <main>
+        <div class="container">
+            <h1 class="text-center py-4 bg-card mt-2 col col-md-6"> Registro </h1>
+        </div>
+
+        <div class="recuadro">
+            <div class="table text-center py-4 bg-card col col-md-6 border border-secondary border-3 pt-3 mt-5"> 
+     
+                <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/usuario/guardar}" method="post"
+                    th:object="${usuario}" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-sm-2 col-form-label col-form-label-sm">Nombre</label><br>
+                        <div class="col-sm-4 mb-2">
+                            <input type="text" class="form-control form-control-sm" th:field="*{nombre}" id="nombre"
+                                placeholder="Nombre">
+                        </div>
+                        <div class="col-sm-4 text-danger">
+                            <p class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"
+                                th:errors="*{nombre}" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-sm-2 col-form-label col-form-label-sm">Apellido</label><br>
+                        <div class="col-sm-4 mb-2">
+                            <input type="text" class="form-control form-control-sm" th:field="*{apellido}" id="apellido"
+                                placeholder="Apellido">
+                        </div>
+                        <div class="col-sm-4 text-danger">
+                            <p class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errorclass="error"
+                                th:errors="*{apellido}" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label><br>
+                        <div class="col-sm-4 mb-2">
+                            <input type="email" class="form-control form-control-sm" th:field="*{email}" id="email"
+                                placeholder="Email">
+                        </div>
+                        <div class="col-sm-4 text-danger">
+                            <p class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errorclass="error"
+                                th:errors="*{email}" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="file" class="col-sm-2 col-form-label col-form-label-sm">Foto de Perfill</label><br>
+                        <div class="col-sm-4 mb-2">
+                            <input type="file" class="form-control" id="file" name="file">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label><br>
+                        <div class="col-sm-4 mb-2">
+                            <input type="password" class="form-control form-control-sm" th:field="*{password}"
+                                id="Contraseña" placeholder="Ingrese Contraseña">
+                        </div>
+                        <div class="col-sm-4 text-danger">
+                            <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
+                                th:errors="*{password}" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm">Repetir
+                            Contraseña</label><br>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control form-control-sm" id="Contraseña2"
+                                placeholder="Repita Contraseña" name="password2">
+                        </div>
+                        <div class="col-sm-4 text-danger">
+                            <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
+                                th:errors="*{password}" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-sm-1">
+                        <button class="btn btn-primary" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="/plantilla/plantilla::footer"></footer>
+</body>
+
+</html>

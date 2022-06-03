@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xml:lang xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/plantilla/plantilla::head"></head>
+
+<body>
+<header th:replace="/plantilla/plantilla::header"></header>
+
+<main class="container mt-3">
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${h1}"></div>
+        <div class="card-body ">
+
+            <div class="card-body ">
+                <img class="left perfil" th:src="@{'/imagenes/usuario/' + ${usuario.foto}}"
+                     th:alt="${usuario.foto}">
+            </div>
+            <form class="row g-3" th:action="@{/usuario/guardar}" th:object="${usuario}" method="post"
+                  enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{password}">
+<!--                <input type="hidden" value="*{password2}" name="password2" >-->
+<!--                <input type="hidden" th:field="*{alta}">-->
+                <input type="hidden" th:field="*{baja}">
+                <input type="hidden" th:field="*{foto}">
+                <div class="form-group row mt-3">
+                    <label for="nombre" class="col-sm-3 col-form-label"> Nombre</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{nombre}" class="form-control" id="nombre"
+                               placeholder="Ingrese nombre" required>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label for="apellido" class="col-sm-3 col-form-label"> Apellido</label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{apellido}" class="form-control" id="apellido"
+                               placeholder="Ingrese apellido" required>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label for="email" class="col-sm-3 col-form-label"> Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" th:field="*{email}" class="form-control" id="email"
+                               placeholder="Ingrese email" required>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label for="email" class="col-sm-3 col-form-label"> Asignar Rol</label>
+                    <div class="col-sm-6">
+                        <select th:field="*{rol}">
+                            <option th:each="rol : ${roles}" th:value="${rol}" th:text="${rol.toString()}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label for="file" class="col-sm-2 col-form-label col-form-label-sm">Cambiar Foto</label><br>
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" id="file" name="file">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <input type="submit" class="btn btn-primary" value="Guardar"/>
+                    <a th:href="@{/usuario/pass/} + *{id}" class="btn btn-secondary">Modificar Password</a>
+                    <a class="btn btn-success" onclick="goBack()" th:href="@{/usuario/}" value="Regresar"/>Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="/plantilla/plantilla::footer"></footer>
+
+</body>
+</html>

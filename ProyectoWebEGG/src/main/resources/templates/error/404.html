@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/plantilla/plantilla::head"></head>
+
+<body>
+	<header th:replace="/plantilla/plantilla::header"></header>
+
+	<main>
+
+		
+		<div class="container text-center py-3 mt-3">
+			<div class="panel bg-light mt-3">
+				<div class="panel-heading  mt-3">
+					<h3 class="panel-title text-danger mt-3">
+						<span class=" mt-3" th:text="${error}"></span> - <span th:text="${status}"></span>
+					</h3>
+				</div>
+				<div class="panel-body  mt-3">
+					<img th:src="@{/imagenes/errores/error.png}" width="60" height="60" alt="">
+					<h4 class=" mt-3">La página solicitada no existe!</h4>
+				</div>
+			</div>
+		</div>
+		
+	</main>
+	
+	<footer th:replace="/plantilla/plantilla::footer"></footer>
+	
+</body>
+</html>

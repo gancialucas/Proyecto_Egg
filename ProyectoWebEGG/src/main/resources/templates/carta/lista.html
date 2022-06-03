@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xml:lang xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/plantilla/plantilla::head"></head>
+
+<body>
+
+  <header th:replace="/plantilla/plantilla::header"></header>
+
+  <main>
+   
+    <div class="container">
+      <table class="table  table-hover  table-bordered border border-3 bg-card">
+        <thead class="border border-3">
+         <div class="container d-flex">
+              <div class="bg-card col col-md-6 border mt-4">
+                <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+             </div>
+              <div class="py-2 ms-5">
+              <a th:href="@{/carta/crear}" class="btn btn-primary ms-5">Crear Carta </a>
+              <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a>
+              </div>
+        </div>
+        </thead>
+          <div class="">
+            <table class="table table-striped bg-card">
+              <thead>
+                <tr>
+                  <th>Fecha de creacion</th>
+                  <th>Lunes</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="carta:${cartas}">
+                  <td th:text="${carta.semana}"></td>
+                  <td>
+                    <select name="" id="">
+                      <option th:each="receta : ${carta.lunes}" value="" th:text="${receta.nombre}"></option>
+                    </select>
+                  </td>
+                  <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
+                  <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
+                </tr>
+              </tbody>
+              <p th:if="${cartas.isEmpty}">No hay cartas para mostrar</p>
+            </table>
+
+          </div>
+  
+        </div>
+  </main>
+</body>
+<footer th:replace="/plantilla/plantilla::footer"></footer>
+</html>
